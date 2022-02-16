@@ -25,7 +25,7 @@ class Controller(object):
 
         self.vehicle_mass = vehicle_mass
         self.fuel_capacity = fuel_capacity
-        self. break_deadband = brake_deadband
+        self. brake_deadband = brake_deadband
         self.decel_limit = decel_limit
         self.accel_limit = accel_limit
         self.wheel_radius = wheel_radius
@@ -54,7 +54,7 @@ class Controller(object):
         throttle = self.throttle_controller.step(vel_error, sample_time)
         brake = 0
 
-        if linear_vel == 0. and current_vel < 0.:
+        if linear_vel == 0. and current_vel < 0.1:
             throttle = 0
             brake = 700 #N*m - to hold the car in place if we are stopped at a light. Acceleration ~1m/s^2
 
